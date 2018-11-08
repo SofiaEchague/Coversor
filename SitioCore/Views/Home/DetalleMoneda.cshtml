@@ -1,0 +1,48 @@
+﻿@model Modelo.Moneda
+
+
+<h2>@Model.IdentificadorMoneda</h2>
+
+<div class="thumbnail">
+    <img alt="@Model.Nombre" 
+         src="https://www.worldatlas.com/r/w728-h425-c728x425/upload/d0/91/86/shutterstock-403371907.jpg">
+    <div class="caption-full">
+        <h3 class="pull-right">@Model.IdentificadorMoneda</h3>
+        <h3>
+            <a href="#">@Model.Nombre</a>
+        </h3>
+        @*<h4>@Model.ShortDescription</h4>
+        <p>@Model.LongDescription</p>*@
+    </div>
+</div>
+
+
+
+
+<form asp-action="Detallemoneda" method="post" class="form-horizontal" role="form">
+
+    <div asp-validation-summary="All" class="text-danger"></div>
+    
+        <div class="form-group">
+        <label asp-for="IdentificadorMoneda" class="col-md-2 control-label"></label>
+        <div class="col-md-5">
+            <input asp-for="IdentificadorMoneda" class="form-control" />
+            <span asp-validation-for="IdentificadorMoneda" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Nombre" class="col-md-2 control-label"></label>
+        <div class="col-md-5">
+            <input asp-for="Nombre" class="form-control" />
+            <span asp-validation-for="Nombre" class="text-danger"></span>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-5">
+            <input type="submit" class="btn btn-primary" value="Send feedback" />
+        </div>
+    </div>
+
+</form>

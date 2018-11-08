@@ -1,0 +1,75 @@
+﻿@model SitioCore.ViewModel.ConversorViewModel
+
+<form asp-action="Resultado" method="post" class="form-horizontal" role="form">
+
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="container">
+        <div class="row">
+            <div class="thumbnail col-sm-12 center-block">
+                <div class="caption">
+                    <h2>@Model.Titulo</h2>
+                    <div class="form-group">
+                        <label asp-for="idMonedaOrigen" class="col-md-2 control-label"></label>
+                        <div class="col-md-5">
+                            <select asp-for="idMonedaOrigen"
+                                    class="form-control"
+                                    asp-items="@(new SelectList(@Model.ListaMonedas,"IdentificadorMoneda", "Nombre"))">
+                                <option value="">Selecciona uno ...</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="idMonedaDestino" class="col-md-2 control-label"></label>
+                        <div class="col-md-5">
+                            <select asp-for="idMonedaDestino"
+                                    class="form-control"
+                                    asp-items="@(new SelectList(@Model.ListaMonedas,"IdentificadorMoneda", "Nombre"))">
+                                <option value="">Selecciona uno ...</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Cantidad" class="col-md-2 control-label"></label>
+                        <div class="col-md-5">
+                            <input asp-for="Cantidad" class="form-control" />
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-5">
+                            <input type="submit" class="btn btn-primary" value="Convertir" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+</form>
+
+@section Scripts {
+    <script>
+    $(document).ready(() => {
+            $('#idMonedaOrigen').change((self) => hideSelected(self, $('#idMonedaDestino').children()));
+            function hideSelected(self, selector) {
+                const selected = self.target.selectedOptions[0].value;
+                selector.each((i, o) => {
+                    $(o).show();
+                });
+                selector.each(function (i, o) {
+                    if (o.value === selected && o.value !== "Selecciona uno ...")
+                        $(o).hide();
+                });
+            }
+
+            $('#Cantidad').focusout(function () {
+                let value = $(this).val();
+                $(this).val(value.replace(/\./, ','));
+            });
+        });</script>
+}

@@ -1,0 +1,99 @@
+﻿@model SitioCore.ViewModel.HomeViewModel
+
+
+<div class="container">
+    <div class="row">
+        <div class="thumbnail col-sm-12">
+            <div class="col-sm-6 pull-right">
+                <h2>Factores</h2>
+                <div class="caption">
+                    <table class="table table-dark col-sm-12">
+                        <thead>
+                            <tr>
+                                <th scope="col">Denominación</th>
+                                <th scope="col">Unidad</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var factor in Model.ListaFactor)
+                            {
+                                <tr>
+
+                                    <td>@factor.denominacion</td>
+                                    <td>@factor.Factor.</td>
+
+                                </tr>
+
+                            }
+                            <table class="table table-dark col-sm-12">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Código ISO</th>
+                                        <th scope="col">Nombre</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var moneda in Model.ListaMonedas)
+                                    {
+                                        <tr>
+
+                                            <td>
+                                                @*@moneda.IdentificadorMoneda*@
+                                                <a asp-controller="Home"
+                                                   asp-action="DetalleMoneda"
+                                                   asp-route-id="@moneda.Id">@moneda.IdentificadorMoneda</a>
+                                            </td>
+                                            <td>@moneda.Nombre</td>
+
+                                        </tr>
+
+                                    }
+
+
+                                </tbody>
+                            </table>
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+            <div class="col-sm-6 pull-left">
+                <h2>Monedas</h2>
+                <table class="table table-dark col-sm-12">
+                    <thead>
+                        <tr>
+                            <th scope="col">Código ISO</th>
+                            <th scope="col">Nombre</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var moneda in Model.ListaMonedas)
+                        {
+                            <tr>
+
+                                <td>
+                                    @*@moneda.IdentificadorMoneda*@
+                                    <a asp-controller="Home"
+                                       asp-action="DetalleMoneda"
+                                       asp-route-id="@moneda.Id">@moneda.IdentificadorMoneda</a>
+                                </td>
+                                <td>@moneda.Nombre</td>
+
+                            </tr>
+
+                        }
+
+
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+

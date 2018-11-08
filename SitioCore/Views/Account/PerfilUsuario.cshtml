@@ -1,0 +1,79 @@
+﻿@model SitioCore.ViewModel.UserViewModel
+
+
+<h2>@Model.Titulo</h2>
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="thumbnail col-sm-6 pull-right">
+            <h2>Mis búsquedas</h2>
+            <div class="caption">
+
+                @if (Model.HistorialOperaciones.Count == 0)
+                {
+                    <p>Todavia no se ha realizado ninguna conversión</p>
+                }
+                else
+                {
+                    <table class="table table-dark">
+                        <thead>
+                            <tr>
+                                <th scope="col">Info</th>
+                                <th scope="col">Referencia conversión</th>
+                                <th scope="col">Cantidad</th>
+                                <th scope="col">Resultado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var operacion in Model.HistorialOperaciones)
+                            {
+                                <tr>
+                                    <th scope="row">
+                                        <a><i class="fas fa-arrows-alt"></i></a>
+                                    </th>
+                                    <td>@operacion.IdMonedaOrigen@operacion.IdMonedaDestino</td>
+                                    <td>@operacion.Cantidad @operacion.IdMonedaOrigen</td>
+                                    <td>@operacion.Valor @operacion.IdMonedaDestino</td>
+                                </tr>
+
+                            }
+
+
+                        </tbody>
+                    </table>
+
+
+                }
+
+            </div>
+        </div>
+        <div class=" thumbnail col-sm-6 pull-left">
+            <h2>Mis datos</h2>
+            <div class="container">
+                <div class="card">
+                    <div class="container-fluid">
+                        <div class="wrapper row">                       
+                            <div class="details col-md-6">
+                                <h3>@Model.Nombre</h3>
+                                <div>
+                                    <p>Fecha nacimiento @Model.FechaNacimiento</p>
+                                    <p>Pais:@Model.OrigenPais                                    
+                                    <p>Email de contacto asociado: @Model.Email</p>
+                                    <p>Nombre de usuario de la cuent: @Model.Username</p>
+                                </div>
+                              
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+         <div class="row">
+
+         </div>
+ </div>
